@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorGray">#8C8C8C</color>
+    <color name="colorLightGray">#EAEAEA</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorFeminine">#F361DC</color>
+    <color name="colorModernChic">#8C8C8C</color>
+    <color name="colorSimpleBasic">#E5D85C</color>
+    <color name="colorLovely">#FFB2D9</color>
+    <color name="colorUnique">#FF90FF</color>
+    <color name="colorMissy">#FFA873</color>
+    <color name="colorCampus">#B2CCFF</color>
+    <color name="colorVintage">#F29661</color>
+    <color name="colorSexyGram">#FF007F</color>
+    <color name="colorSchoolLook">#ABF200</color>
+    <color name="colorRomantic">#FFF612</color>
+    <color name="colorOfficeLook">#8EC7D0</color>
+    <color name="colorLuxury">#CC723D</color>
+    <color name="colorHollywoodStyle">#B2EBF4</color>
+</resources>
