@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import android.widget.CheckBox
 import android.widget.GridLayout
 import androidx.core.content.ContextCompat
@@ -33,10 +34,12 @@ class FilterActivity : BaseActivity<ActivityFilterBinding>() {
             ageViews.forEach {
                 it.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
                 it.background = getBackground(R.drawable.filter_age_unclick)
+                it.isChecked = false
             }
             styleViews.forEach {
                 it.setTextColor(ContextCompat.getColor(this, R.color.colorAccent))
                 it.background = getBackground(R.drawable.filter_style_unclick)
+                it.isChecked = false
             }
         }
         filter.setOnClickListener { filter(ageViews, styleViews) }
