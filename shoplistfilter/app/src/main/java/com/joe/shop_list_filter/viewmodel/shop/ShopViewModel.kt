@@ -1,6 +1,5 @@
 package com.joe.shop_list_filter.viewmodel.shop
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,9 +22,6 @@ class ShopViewModel(private val shopRepository: ShopRepository) : BaseViewModel(
                 .doOnSuccess { setProgress(false) }
                 .doOnError { setProgress(false) }
                 .subscribe({
-                    it.second.forEach {
-                        Log.e("tag", "${it.name} ${it.styleMatchCount} ${it.style} ${it.ages}, ${it.score}")
-                    }
                     if (it.second.isEmpty())
                         error("쇼핑몰 목록이 없습니다.")
                     _shops.value = it

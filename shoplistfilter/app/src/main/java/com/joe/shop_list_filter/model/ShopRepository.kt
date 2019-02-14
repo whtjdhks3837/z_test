@@ -9,7 +9,7 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.io.InputStream
 
-interface ShopRepository : Repository {
+interface ShopRepository {
     fun loadShops(
         shops: InputStream,
         ageFilter: List<Int>,
@@ -28,19 +28,21 @@ class ShopRepositoryImpl : ShopRepository {
                 shopsObserve(shops)
                     .filter(ageFilter)
                     .filter(stylesFilter)
-                    .sortStyleMatchCountWithAndScore()
+                    .sortStyleMatchCountWithScore()
             }
             ageFilter.any { age -> age == AGE_EXIST } && stylesFilter.isEmpty() -> {
                 shopsObserve(shops)
                     .filter(ageFilter)
-                    .sortStyleMatchCountWithAndScore()
+                    .sortStyleMatchCountWithScore()
             }
             ageFilter.all { age -> age == AGE_NOT_EXIST } && stylesFilter.isNotEmpty() -> {
                 shopsObserve(shops)
                     .filter(stylesFilter)
-                    .sortStyleMatchCountWithAndScore()
+                    .sortStyleMatchCountWithScore()
             }
-            else -> { shopsObserve(shops).sortStyleMatchCountWithAndScore() }
+            else -> {
+                shopsObserve(shops).sortStyleMatchCountWithScore()
+            }
         }
     }
 
@@ -85,7 +87,7 @@ class ShopRepositoryImpl : ShopRepository {
                 })
         }
 
-    private fun Single<Pair<String, List<Shop>>>.sortStyleMatchCountWithAndScore() =
+    private fun Single<Pair<String, List<Shop>>>.sortStyleMatchCountWithScore() =
         this.map { shops ->
             Pair(
                 shops.first,

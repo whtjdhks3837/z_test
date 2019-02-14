@@ -10,22 +10,21 @@ class BowlingScoreCalculator(private val bowlingScore: String) {
 
     fun compute() {
         computeFrames()
-        printResult(sumEachFrameToList())
+        val computedFrames = sumEachFrameToList()
+        printResult(computedFrames)
 
     }
 
-    private fun computeFrames() =
-            frames.filter { !it.stack.empty() }
-                    .forEachIndexed(fun(index: Int, frame: Frame) {
-                        when {
-                            frame.case == UN_COMPUTED_SPARE -> {
-                                BowlingRule(frames).spare(index)
-                            }
-                            frame.case == UN_COMPUTED_STRIKE -> {
-                                BowlingRule(frames).strike(index)
-                            }
-                        }
-                    })
+    private fun computeFrames()  {
+        val rule = BowlingRule(frames)
+        frames.filter { !it.stack.empty() }
+                .forEachIndexed { index, frame ->
+                    when (frame.case) {
+                        UN_COMPUTED_SPARE -> { rule.spare(index) }
+                        UN_COMPUTED_STRIKE -> { rule.strike(index) }
+                    }
+                }
+    }
 
 
     private fun sumEachFrameToList() =

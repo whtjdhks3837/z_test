@@ -1,9 +1,6 @@
 import org.junit.Before
 import org.junit.Test
 import java.io.File
-import java.lang.Exception
-import java.lang.StringBuilder
-import javax.naming.NoPermissionException
 
 class FlattenTreeTest {
     private val converter = JsonToArrayConverter()
@@ -36,10 +33,5 @@ class FlattenTreeTest {
     @Test(expected = JsonFormatException::class)
     fun endOfDepthTest() {
         converter.convert(endOfDepthInvalidJson.toString())
-    }
-
-    @Test
-    fun depthThreeLesserTest() {
-
     }
 }

@@ -19,16 +19,15 @@ class JsonToArrayConverter {
         val categories = mutableListOf<String>()
         val result = mutableListOf<String>()
         val categoryTmp = StringBuilder()
-        json.forEachIndexed { index, it ->
+        json.forEachIndexed { _, it ->
             when {
                 it == '{' -> { bracketStack.push(it) }
                 it == '}' -> {
                     if (bracketStack.isEmpty())
                         throw JsonFormatException(JSON_FORMAT_ERROR)
-                    bracketStack.pop()
-                    if (json[index - 1] == '{' && bracketStack.isNotEmpty()) {
-//                        if (categories.size != bracketStack.size)
-//                            throw JsonFormatException(JSON_FORMAT_ERROR)
+                    if (bracketStack.pop() == '{' && bracketStack.isNotEmpty()) {
+                        if (categories.size != bracketStack.size)
+                            throw JsonFormatException(JSON_FORMAT_ERROR)
                         val category = StringBuilder()
                         for (i in 0 until bracketStack.size)
                             category.append(categories[i])

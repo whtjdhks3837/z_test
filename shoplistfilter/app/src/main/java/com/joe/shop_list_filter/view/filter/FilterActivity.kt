@@ -132,7 +132,6 @@ class FilterActivity : BaseActivity<ActivityFilterBinding>() {
             background?.let { this.background = it }
         }
 
-
     private fun getBackground(resourceId: Int) =
         ContextCompat.getDrawable(this, resourceId)
 

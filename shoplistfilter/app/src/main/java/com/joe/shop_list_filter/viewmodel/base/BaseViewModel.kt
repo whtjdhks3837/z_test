@@ -3,7 +3,6 @@ package com.joe.shop_list_filter.viewmodel.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.joe.shop_list_filter.model.Repository
 import io.reactivex.disposables.CompositeDisposable
 
 open class BaseViewModel : ViewModel() {
