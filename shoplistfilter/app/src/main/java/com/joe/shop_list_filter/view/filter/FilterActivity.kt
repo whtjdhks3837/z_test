@@ -30,8 +30,14 @@ class FilterActivity : BaseActivity<ActivityFilterBinding>() {
         ageViews.forEach { setAgeOnClickListener(it) }
         styleViews.forEach { setStyleOnClickListener(it) }
         init.setOnClickListener { _ ->
-            ageViews.forEach { it.background = getBackground(R.drawable.filter_age_unclick) }
-            styleViews.forEach { it.background = getBackground(R.drawable.filter_style_unclick) }
+            ageViews.forEach {
+                it.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
+                it.background = getBackground(R.drawable.filter_age_unclick)
+            }
+            styleViews.forEach {
+                it.setTextColor(ContextCompat.getColor(this, R.color.colorAccent))
+                it.background = getBackground(R.drawable.filter_style_unclick)
+            }
         }
         filter.setOnClickListener { filter(ageViews, styleViews) }
         close.setOnClickListener { finish() }
